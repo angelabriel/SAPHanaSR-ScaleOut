@@ -2,7 +2,7 @@
 # spec file for package SAPHanaSR-ScaleOut
 #
 # Copyright (c) 2016      SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017-2025 SUSE LLC
+# Copyright (c) 2017-2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,7 @@ mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}/usr/lib/ocf/resource.d/suse/
 
 # resource agents
-install -m 0755 ra/* %{buildroot}/usr/lib/ocf/resource.d/suse/
+install -m 0755 ra/{SAPHanaTopology,SAPHanaController} %{buildroot}/usr/lib/ocf/resource.d/suse/
 
 # documentation
 install -m 0444 doc/* %{buildroot}/%{_docdir}/%{name}
