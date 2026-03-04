@@ -99,7 +99,7 @@ get_hana_attribute() {
 }
 
 # call the RA to initialize the needed attributes.
-# should be called only, if cluster or the resources are in mainteance/unmanaged
+# should be called only, if cluster or the resources are in maintenance/unmanaged
 init_ra() {
     if [ -z "$INO" ]; then
         raEnv="export OCF_ROOT=${OCFROOT}; export OCF_RESKEY_SID=${RSID}"
@@ -904,7 +904,7 @@ chk_for_maintenance() {
             cmaint="false"
     fi
     for m in $resM; do
-        if ! crm_mon -r1 | grep "$m" | grep unmanaged >/dev/null 2>&1; then
+        if ! crm_mon -r1 | grep "$m" | grep -e unmanaged -e maintenance >/dev/null 2>&1; then
             mmaint="false"
         fi
     done
@@ -912,7 +912,7 @@ chk_for_maintenance() {
         mslInMaint="true"
     fi
     for c in $resC; do
-        if ! crm_mon -r1 | grep "$c" | grep unmanaged >/dev/null 2>&1; then
+        if ! crm_mon -r1 | grep "$c" | grep -e unmanaged -e maintenance >/dev/null 2>&1; then
             cmaint="false"
         fi
     done
