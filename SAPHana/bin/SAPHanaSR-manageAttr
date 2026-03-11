@@ -444,9 +444,9 @@ get_global_ini_hooks() {
     local section=""
 
     GLOBINI=$(mktemp /tmp/saphana-manageAttr.XXXXXXXX)
-    $runCmd "cat $globalIni" 2>&1 | awk -v tmpf="$GLOBINI" '
+    $runCmd "cat $globalIni" 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | awk -v tmpf="$GLOBINI" '
         BEGIN {list = 0}
-        /OK: \[/ || /ERROR: \[/ {
+        /OK: \[/ || /ERROR: \[/ || /INFO: \[/ {
             if (siteID == "") { next }
             if (siteID in site) {
                 # skip last data
