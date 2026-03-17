@@ -1,8 +1,9 @@
 .\" Version: 0.185.0
 .\"
-.TH SAPHanaSR-ScaleOut 7 "26 Jun 2025" "" "SAPHanaSR"
+.TH SAPHanaSR-ScaleOut 7 "17 Jan 2026" "" "SAPHanaSR"
 .\"
 .SH NAME
+.\"
 SAPHanaSR-ScaleOut \- Tools for automating SAP HANA system replication in
 scale-out setups.
 .PP
@@ -55,7 +56,7 @@ site including IP address.
 Note: To automate SAP HANA SR in scale-up setups, please use the package
 SAPHanaSR.
 .PP
-\fBScenarios\fR
+\fBSituations\fR
 .PP
 .\" TODO
 In order to illustrate the meaning of the above overview, some important
@@ -158,7 +159,6 @@ This case fits for scale-out HANAs with small number of nodes, e.g. ERP systems
 with two nodes.
 .\" TODO scenario filesystem full or inaccesible: additional Filsystem RA
 .PP
-.\"
 \fBImplementation\fR
 .PP
 The two HANA database systems (primary and secondary site) are managed by the
@@ -224,7 +224,7 @@ situation. The user is responsible for data integrity. See also susTkOver.py(7).
 .PP
 .\"
 .SH REQUIREMENTS
-.PP
+.\"
 For the current version of the package SAPHanaSR-ScaleOut, the support is
 limited to the following scenarios and parameters:
 .PP
@@ -355,20 +355,23 @@ see also firewalld(8).
 .PP
 30. No SELinux rules must block any needed action. See also selinux(8).
 .PP
-31. Sizing of both HANA sites needs to be done according to SAP rules. The scale-out
+31. The Linux cluster should not start automatically at reboot on an node that
+recently has been fenced.
+.PP
+32. Sizing of both HANA sites needs to be done according to SAP rules. The scale-out
 performace optimized scenario requires both sites prepared for running the primary
 HANA database.
 .PP
 .\"
 .SH BUGS
-.PP
+.\"
 In case of any problem, please use your favourite SAP support process to open
 a request for the component BC-OP-LNX-SUSE.
-Please report any other feedback and suggestions to feedback@suse.com.
+.\" TODO Please report any other feedback and suggestions to feedback@suse.com.
 .PP
 .\"
 .SH SEE ALSO
-.PP
+.\"
 \fBSAPHanaSR-ScaleOut-scenarios(7)\fP ,
 \fBocf_suse_SAPHanaTopology\fP(7) , \fBocf_suse_SAPHanaController\fP(7) ,
 \fBocf_heartbeat_IPaddr2\fP(7) , \fBSAPHanaSR-ScaleOut_basic_cluster\fP(7) ,
@@ -401,12 +404,14 @@ http://scn.sap.com/community/hana-in-memory/blog/2015/12/14/sap-hana-sps-11-what
 https://blogs.sap.com/2020/01/30/sap-hana-and-persistent-memory/
 .\" TODO SAP notes 3007062 ...
 .PP
+.\"
 .SH AUTHORS
-.PP
+.\"
 A.Briel, F.Herschel, L.Pinne.
 .PP
 .\"
 .SH COPYRIGHT
+.\"
 (c) 2015-2017 SUSE Linux GmbH, Germany.
 .br
 (c) 2018-2026 SUSE LLC
